@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "properties": {
+    "port": {
+      "type": "number"
+    },
+    "dirPath": {
+      "anyOf": [
+        { "type": "array" },
+        { "type": "string" }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

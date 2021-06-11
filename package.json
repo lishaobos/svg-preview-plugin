@@ -1,0 +1,17 @@
+{
+  "name": "svg-preview-plugin",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  },
+  "dependencies": {
+    "browser-sync": "^2.26.14",
+    "glob": "^7.1.6",
+    "schema-utils": "^3.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {}
+}
