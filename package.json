@@ -10,7 +10,13 @@
     "glob": "^7.1.6",
     "schema-utils": "^3.0.0"
   },
-  "keywords": [],
+  "keywords": [
+    "svg",
+    "svg-sprite-loader",
+    "webpack",
+    "webpack-plugin",
+    "preview"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {}
