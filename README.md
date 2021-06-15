@@ -5,7 +5,7 @@
 <img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8c452533b0e847f48c10872a465d1e19~tplv-k3u1fbpfcp-watermark.image">
 
 功能：
-- 预览 svg
+- 实时预览 svg，动态更新预览内容
 - 复制文件名
 - 复制文件路径
 - 删除文件
