@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://github.com/lishaobos/svg-preview-plugin",
+  "repository": "https://github.com/lishaobos/svg-preview-plugin",
   "scripts": {
   },
   "dependencies": {
@@ -15,9 +17,10 @@
     "svg-sprite-loader",
     "webpack",
     "webpack-plugin",
-    "preview"
+    "preview",
+    "svg-preview"
   ],
-  "author": "",
+  "author": "lishaobos",
   "license": "ISC",
   "devDependencies": {}
 }
