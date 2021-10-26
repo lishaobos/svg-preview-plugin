@@ -1,10 +1,10 @@
 const bs = require('browser-sync').create()
 const { resolve } = require('./index')
-const fs = require('fs')
+const fs = require('fs/promises')
 
 const socketEmitter = {
 	async removeFile(path) {
-		await fs.rmSync(path)
+		await fs.rm(path)
 	}
 }
 

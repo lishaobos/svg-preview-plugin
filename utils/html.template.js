@@ -8,7 +8,7 @@ module.exports = `
     <title>Document</title>
     <link
       rel="stylesheet"
-      href="https://unpkg.com/element-plus/lib/theme-chalk/index.css"
+      href="./element-ui.css"
     />
     <style>
       .svg-container {
@@ -49,8 +49,8 @@ module.exports = `
       }
     </style>
   </head>
-  <script src="https://unpkg.com/vue@next"></script>
-  <script src="https://unpkg.com/element-plus/lib/index.full.js"></script>
+  <script src="./vue@next.js"></script>
+  <script src="./element-ui.js"></script>
   <body>
     <div id="app">
       <div class="svg-container">

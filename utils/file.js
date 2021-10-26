@@ -1,5 +1,6 @@
 const glob = require('glob')
-const fs = require('fs')
+const { watch } = require('fs')
+const fs = require('fs/promises')
 const path = require('path')
 const { createHtmlTemplate } = require('./html')
 const { resolve } = require('./index')
@@ -8,7 +9,7 @@ const { createServer, destoryServer, reloadServer } = require('./server')
 const watchers = []
 
 const getFileContent = async filePath => {
-  const content = await fs.readFileSync(filePath, 'utf8')
+  const content = await fs.readFile(filePath, 'utf8')
 	return {
     name: path.basename(filePath).replace('.svg', ''),
     filePath,
@@ -16,21 +17,21 @@ const getFileContent = async filePath => {
 	}
 }
 
-const matchFilesPath = async dirPath => {
-  const result = await glob.sync('*.svg', { cwd: dirPath })
-  return result.map( filePath => path.resolve(dirPath, filePath))
-}
+const matchFilesPath = dirPath => glob.sync('*.svg', { cwd: dirPath }).map( filePath => path.resolve(dirPath, filePath))
 
-const matchFiles = async dirPath => {
+const matchFiles = dirPath => {
   if (typeof dirPath === 'string') {
-    return await matchFilesPath(dirPath)
+    return matchFilesPath(dirPath)
   } else if (Array.isArray(dirPath)) {
-    const data = await Promise.all(dirPath.map(dirPath => matchFilesPath(dirPath)))
-    return data.flat()
+    const data = []
+    dirPath.forEach(dirPath => {
+      data.push(...matchFilesPath(dirPath))
+    })
+    return data
   }
 }
 
-const getFilesInfo = async fileList => await Promise.all(fileList.map(filePath => getFileContent(filePath)))
+const getFilesInfo = fileList => Promise.all(fileList.map(filePath => getFileContent(filePath)))
 
 let timer
 const watchDir = async (dirPath) => {
@@ -46,12 +47,12 @@ const createWatcher = dirPath => {
   const fnc = (...args) => watchDir(dirPath, ...args)
   
   if (Array.isArray(dirPath)) {
-    const arr = dirPath.map(path => fs.watch(path, fnc))
+    const arr = dirPath.map(path => watch(path, fnc))
     watchers.push(arr)
     return 
   }
 
-  watchers.push(fs.watch(dirPath, fnc))
+  watchers.push(watch(dirPath, fnc))
 }
 
 const start = async options => {
@@ -62,10 +63,10 @@ const start = async options => {
 }
 
 const writeFile = async dirPath => {
-  const fileList = await matchFiles(dirPath)
+  const fileList = matchFiles(dirPath)
   const filesContent = await getFilesInfo(fileList)
   const content = createHtmlTemplate(filesContent)
-  await fs.writeFileSync(resolve('../app/index.html'), content)
+  await fs.writeFile(resolve('../app/index.html'), content)
 }
 
 const destory = () => {

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="192px" height="163px" viewBox="0 0 192 163" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>files icon-folder</title>
+    <g id="控件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/其他文件" transform="translate(0.000000, -15.000000)">
+            <g id="files-icon-folder" transform="translate(0.000000, 15.000000)">
+                <path d="M17,20 L166,20 C168.761424,20 171,22.2385763 171,25 L171,99 C171,101.761424 168.761424,104 166,104 L17,104 C14.2385763,104 12,101.761424 12,99 L12,25 C12,22.2385763 14.2385763,20 17,20 Z" id="Rectangle-6" fill="#F9B552"></path>
+                <path d="M11,34 L181,34 C187.075132,34 192,38.9248678 192,45 L192,152 C192,158.075132 187.075132,163 181,163 L11,163 C4.92486775,163 0,158.075132 0,152 L0,45 C0,38.9248678 4.92486775,34 11,34 Z" id="Rectangle-5" fill="#FFCF5C"></path>
+                <path d="M11,0 L85,0 C91.0751322,0 96,4.92486775 96,11 L96,61 C96,67.0751322 91.0751322,72 85,72 L11,72 C4.92486775,72 0,67.0751322 0,61 L0,11 C0,4.92486775 4.92486775,0 11,0 Z" id="Rectangle-5-Copy" fill="#FFCF5C"></path>
+            </g>
+        </g>
+    </g>
+</svg>

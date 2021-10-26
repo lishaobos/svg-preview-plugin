@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="192px" height="192px" viewBox="0 0 192 192" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>-file-word-fill</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#8C69E9" offset="0%"></stop>
+            <stop stop-color="#6E42E1" offset="100%"></stop>
+        </linearGradient>
+        <path d="M98.217867,-7.79566887e-13 L98.217867,-7.79566887e-13 L135.454545,-7.79566887e-13 C142.935493,-7.79566887e-13 149,6.14009486 149,13.7142857 L149,51.5020001 L149,51.5020001" id="path-2"></path>
+        <filter x="-7.9%" y="-11.7%" width="115.8%" height="115.5%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="-2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.0909637238 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="控件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="-file-word-fill">
+            <g id="bg" transform="translate(22.000000, 0.000000)">
+                <path d="M149,51.5020001 L149,51.5020001 L149,178.285714 C149,185.859905 142.935493,192 135.454545,192 L13.5454545,192 C6.06450657,192 0,185.859905 0,178.285714 L0,13.7142857 C0,6.14009486 6.06450657,0 13.5454545,0 L98.217867,0 L98.217867,0" id="路径" fill="url(#linearGradient-1)"></path>
+                <g id="路径" transform="translate(123.608933, 25.751000) scale(-1, -1) translate(-123.608933, -25.751000) ">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                    <use fill-opacity="0.4" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                </g>
+            </g>
+            <text id="GDB" font-family="HiraginoSans-W8, Hiragino Sans" font-size="42" font-weight="600" fill="#FFFFFF">
+                <tspan x="43" y="128">GDB</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

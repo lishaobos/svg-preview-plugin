@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="192px" height="192px" viewBox="0 0 192 192" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>-file-excel-ppt</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#1ABF74" offset="0%"></stop>
+            <stop stop-color="#009F57" offset="100%"></stop>
+        </linearGradient>
+        <polygon id="path-2" points="-0.221590909 0.221590909 77.7784091 0.221590909 77.7784091 77.7784091 -0.221590909 77.7784091"></polygon>
+        <path d="M98.8770473,-7.79566887e-13 L98.8770473,-7.79566887e-13 L136.363636,-7.79566887e-13 C143.894792,-7.79566887e-13 150,6.14009486 150,13.7142857 L150,51.5020001 L150,51.5020001" id="path-4"></path>
+        <filter x="-7.8%" y="-11.7%" width="115.6%" height="115.5%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="0" dy="-2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.0909637238 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="控件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="-file-word-fill" transform="translate(22.000000, 0.000000)">
+            <path d="M150,51.5020001 L150,51.5020001 L150,178.285714 C150,185.859905 143.894792,192 136.363636,192 L13.6363636,192 C6.10520796,192 0,185.859905 0,178.285714 L0,13.7142857 C0,6.14009486 6.10520796,0 13.6363636,0 L98.8770473,0 L98.8770473,0" id="路径" fill="url(#linearGradient-1)"></path>
+            <g id="letter-P-fill" transform="translate(30.681818, 68.571429)">
+                <polygon id="矩形" points="0 0 88.6363636 0 88.6363636 89.1428571 0 89.1428571"></polygon>
+                <g id="编组" transform="translate(5.539773, 5.571429)">
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <g id="矩形" transform="translate(38.778409, 39.000000) rotate(-90.000000) translate(-38.778409, -39.000000) "></g>
+                    <path d="M26.0560249,41.9461393 L35.8770249,51.7671393 L18.5676113,69.1752754 C18.3729062,69.371093 18.056325,69.371995 17.8605074,69.1772899 L17.8584928,69.1752754 L8.7705665,60.035418 C8.57664547,59.8403889 8.57664547,59.5253578 8.7705665,59.3303287 L26.0560249,41.9461393 Z M38.7500249,29.1781393 L48.5710249,38.9991393 L38.8060249,48.8201393 L28.9850249,38.9991393 L38.7500249,29.1781393 Z M59.6963108,8.82271008 L59.6983253,8.82472462 L68.7862517,17.964582 C68.9801727,18.1596111 68.9801727,18.4746422 68.7862517,18.6696713 L51.5000249,36.0541393 L41.6790249,26.2331393 L58.9892069,8.82472462 C59.1839119,8.62890697 59.5004931,8.62800503 59.6963108,8.82271008 Z" id="形状结合" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-3)"></path>
+                    <path d="M32.2338819,2.87024351 L45.1228713,2.90696428 C45.3979006,2.90774784 45.6206613,3.13050844 45.6214448,3.40553776 L45.8243588,74.628334 C45.8251455,74.9044753 45.6019265,75.1289698 45.3257853,75.1297565 C45.3248356,75.1297592 45.323886,75.1297592 45.3229363,75.1297565 L32.4339468,75.0930357 C32.1589175,75.0922522 31.9361569,74.8694916 31.9353734,74.5944622 L31.7324594,3.37166598 C31.7316727,3.09552472 31.9548916,2.87103024 32.2310329,2.87024351 C32.2319826,2.87024081 32.2329322,2.87024081 32.2338819,2.87024351 Z" id="矩形" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-3)" transform="translate(38.778409, 39.000000) scale(-1, 1) rotate(-315.000000) translate(-38.778409, -39.000000) "></path>
+                </g>
+            </g>
+            <g id="路径" transform="translate(124.438524, 25.751000) scale(-1, -1) translate(-124.438524, -25.751000) ">
+                <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+                <use fill-opacity="0.4" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-4"></use>
+            </g>
+        </g>
+    </g>
+</svg>

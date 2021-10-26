@@ -1,12 +1,11 @@
 {
   "name": "svg-preview-plugin",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "",
   "main": "index.js",
   "homepage": "https://github.com/lishaobos/svg-preview-plugin",
   "repository": "https://github.com/lishaobos/svg-preview-plugin",
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
     "browser-sync": "^2.26.14",
     "glob": "^7.1.6",
