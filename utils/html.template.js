@@ -73,7 +73,7 @@ module.exports = `
           <template #reference>
             <div class="svg-item">
               <div :id="'svg-content-' + index"></div>
-              <div class="svg-item-name">{{ item.name }}</div>
+              <div class="svg-item-name" :title='item.name'>{{ item.name }}</div>
             </div>
           </template>
         </el-popover>

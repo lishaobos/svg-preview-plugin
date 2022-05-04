@@ -2,7 +2,7 @@ const { start, destory } = require('./utils/file')
 const schema = require('./utils/schema.json')
 const { validate } = require('schema-utils')
 
-module.exports = class SvgPreviewPlugin {
+exports.WebpackPlugin = class SvgPreviewPlugin {
 	constructor(options) {
 		validate(schema, options, {
 			name: 'SvgPreviewPlugin',
@@ -25,6 +25,26 @@ module.exports = class SvgPreviewPlugin {
 			this.isWatch = true
 			
 			await start(options)
+		}
+	}
+}
+
+exports.VitePlugin = function (options) {
+	let isWatch = false
+
+	return {
+		name: 'SvgPreviewPlugin',
+		async buildStart() {
+			console.log(`SVG预览：`, `\x1B[36mhttp://localhost:${options.port}\x1B[0m`)
+
+			if (!isWatch) {
+				isWatch = true
+				
+				await start(options)
+			}
+		},
+		closeWatcher() {
+			destory()
 		}
 	}
 }
