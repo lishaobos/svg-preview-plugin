@@ -19,11 +19,22 @@ npm i -D svg-preview-plugin@latest
 
 ## options
 
-- dirPath: String | Array
-  - preview path
+* dirPath
+  * Type: `string | array`
+  * Desc: `预览路径`
 
-- port: Number
-  - web port
+* port
+  * Type: `number`
+  * Desc: `预览端口`
+
+* deep
+  * Type: `boolean`
+  * Default: `false`
+  * Desc: `是否递归显示 dirPath 里的 svg`
+
+* formatName
+  * Type: `function`
+  * Desc: `自定义复制内容`
 
 ## example
 
@@ -35,7 +46,11 @@ module.exports = {
   plugins: [
     new SvgPreview.WebpackPlugin({
       dirPath: path.resolve('src/common/icons/svg'),
-      port: 3000
+      port: 3000,
+      deep: true,
+      formatName(name) {
+        reurn `<MyIcon name="${name}">`
+      }
     })
   ]
 }
@@ -49,7 +64,11 @@ module.exports = {
   plugins: [
     new SvgPreview.VitePlugin({
       dirPath: path.resolve('src/common/icons/svg'),
-      port: 3000
+      port: 3000,
+      deep: true,
+      formatName(name) {
+        reurn `<MyIcon name="${name}">`
+      }
     })
   ]
 }

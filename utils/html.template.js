@@ -84,7 +84,8 @@ module.exports = `
       const App = {
         data() {
           return {
-            list: []
+            list: [],
+            isSocketInit: false
           }
         },
         created() {
@@ -122,8 +123,15 @@ module.exports = `
             window.___browserSync___.socket.emit('removeFile', filePath)
           },
           async copy(val) {
-            await navigator.clipboard.writeText(val)
-            this.$message.success('复制成功')
+            if (!this.isSocketInit) {
+              this.isSocketInit = true
+              window.___browserSync___.socket.on('name', async name => {
+                await navigator.clipboard.writeText(name)
+                this.$message.success('复制成功：' + name)
+              })
+            }
+
+            window.___browserSync___.socket.emit('formatName', val)
           }
         }
       }

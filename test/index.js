@@ -1,12 +1,15 @@
 const { start, destory } = require('../utils/file')
 const path = require('path')
 
-destory()
+// destory()
 
 start({
-  // dirPath: path.resolve('./test/svg'),
+  deep: true,
+  formatName(name) {
+    return `<MyIcon name="${name}" />`
+  },
   dirPath: [
-    path.resolve('src/common/icons/svg')
+    path.resolve('test/svg')
   ],
   port: 3007
 })

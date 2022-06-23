@@ -17,15 +17,15 @@ const getFileContent = async filePath => {
 	}
 }
 
-const matchFilesPath = dirPath => glob.sync('*.svg', { cwd: dirPath }).map( filePath => path.resolve(dirPath, filePath))
+const matchFilesPath = (dirPath, deep) => glob.sync(deep ? '**/*.svg' : '*.svg', { cwd: dirPath }).map( filePath => path.resolve(dirPath, filePath))
 
-const matchFiles = dirPath => {
+const matchFiles = ({ dirPath, deep }) => {
   if (typeof dirPath === 'string') {
-    return matchFilesPath(dirPath)
+    return matchFilesPath(dirPath, deep)
   } else if (Array.isArray(dirPath)) {
     const data = []
     dirPath.forEach(dirPath => {
-      data.push(...matchFilesPath(dirPath))
+      data.push(...matchFilesPath(dirPath, deep))
     })
     return data
   }
@@ -43,7 +43,7 @@ const watchDir = async (dirPath) => {
   }, 100)
 }
 
-const createWatcher = dirPath => {
+const createWatcher = ({ dirPath }) => {
   const fnc = (...args) => watchDir(dirPath, ...args)
   
   if (Array.isArray(dirPath)) {
@@ -57,13 +57,13 @@ const createWatcher = dirPath => {
 
 const start = async options => {
   createServer(options)
-  createWatcher(options.dirPath)
-  await writeFile(options.dirPath)
+  createWatcher(options)
+  await writeFile(options)
   reloadServer()
 }
 
-const writeFile = async dirPath => {
-  const fileList = matchFiles(dirPath)
+const writeFile = async options => {
+  const fileList = matchFiles(options)
   const filesContent = await getFilesInfo(fileList)
   const content = createHtmlTemplate(filesContent)
   await fs.writeFile(resolve('../app/index.html'), content)
