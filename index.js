@@ -34,6 +34,7 @@ exports.VitePlugin = function (options) {
 
 	return {
 		name: 'SvgPreviewPlugin',
+		apply: 'serve',
 		async buildStart() {
 			console.log(`SVG预览：`, `\x1B[36mhttp://localhost:${options.port}\x1B[0m`)
 
