@@ -1,14 +1,17 @@
-const bs = require('browser-sync').create()
-const { resolve } = require('./index')
-const fs = require('fs/promises')
-let cacheOptions = {}
+import browserSync from 'browser-sync'
+import { resolve } from './index'
+import fs from 'fs/promises'
+import type { PathLike } from 'fs'
+
+const bs = browserSync.create()
+let cacheOptions: pluginOptions | undefined
 
 const socketEmitter = {
-	async removeFile(path) {
+	async removeFile(path: PathLike) {
 		await fs.rm(path)
 	},
-	formatName(name) {
-		if (typeof cacheOptions.formatName === 'function') {
+	formatName(name: string) {
+		if (typeof cacheOptions?.formatName === 'function') {
 			bs.sockets.emit('name', cacheOptions.formatName(name))
 		} else {
 			bs.sockets.emit('name', name)
@@ -16,11 +19,11 @@ const socketEmitter = {
 	}
 }
 
-const initEmitter = (options) => {
+const initEmitter = () => {
 	bs.sockets.on('connection', client => Object.keys(socketEmitter).forEach( key => client.on(key, socketEmitter[key])));
 }
 
-const createServer = (options) => {
+const createServer = (options: pluginOptions) => {
 	cacheOptions = options
 
 	bs.init({
@@ -35,7 +38,7 @@ const reloadServer = () => bs.reload()
 
 const destoryServer = () => bs.exit()
 
-module.exports = {
+export {
   createServer,
 	reloadServer,
 	destoryServer

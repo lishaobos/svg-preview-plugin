@@ -38,13 +38,13 @@ npm i -D svg-preview-plugin@latest
 
 ## example
 
-```
+```js
 // webpack
-const SvgPreview = require('svg-preview-plugin')
+const { WebpackPlugin } = require('svg-preview-plugin')
 
 module.exports = {
   plugins: [
-    new SvgPreview.WebpackPlugin({
+    new WebpackPlugin({
       dirPath: path.resolve('src/common/icons/svg'),
       port: 3000,
       deep: true,
@@ -56,13 +56,13 @@ module.exports = {
 }
 ```
 
-```
+```js
 // vite | rollup
-import SvgPreivew from 'svg-preview-plugin'
+import { VitePlugin } from 'svg-preview-plugin'
 
 module.exports = {
   plugins: [
-    new SvgPreview.VitePlugin({
+    VitePlugin({
       dirPath: path.resolve('src/common/icons/svg'),
       port: 3000,
       deep: true,

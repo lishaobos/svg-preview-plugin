@@ -1,12 +1,14 @@
 {
   "name": "svg-preview-plugin",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "homepage": "https://github.com/lishaobos/svg-preview-plugin",
   "repository": "https://github.com/lishaobos/svg-preview-plugin",
   "scripts": {
-    "test": "node ./test/index.js"
+    "eslint": "eslint .",
+    "build": "tsup index.ts --dts --format esm,cjs"
   },
   "dependencies": {
     "browser-sync": "^2.26.14",
@@ -25,5 +27,13 @@
   ],
   "author": "lishaobos",
   "license": "ISC",
-  "devDependencies": {}
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
+    "eslint": "^8.27.0",
+    "tsup": "^6.4.0",
+    "typescript": "^4.8.4",
+    "vite": "^3.2.3",
+    "webpack": "^5.74.0"
+  }
 }

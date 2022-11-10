@@ -1,20 +1,24 @@
-const { start, destory } = require('./utils/file')
-const schema = require('./utils/schema.json')
-const { validate } = require('schema-utils')
+import { start, destory } from './utils/file'
+import schema from './utils/schema.json'
+import { validate } from 'schema-utils'
+import type { Compiler } from 'webpack'
 
-exports.WebpackPlugin = class SvgPreviewPlugin {
-	constructor(options) {
-		validate(schema, options, {
+
+export const WebpackPlugin = class SvgPreviewPlugin {
+	isWatch = false
+	options: pluginOptions
+
+	constructor(options: pluginOptions) {
+		validate(schema as any, options, {
 			name: 'SvgPreviewPlugin',
 			baseDataPath: "options"
 		})
 		this.options = options
-		this.isWatch = false
 	}
 
-	async apply(compiler) {
+	async apply(compiler: Compiler) {
 		const { options } = this
-		
+
 		compiler.hooks.done.tap('SvgPreviewPlugin', ()=> {
 			console.log(`SVG预览：`, `\x1B[36mhttp://localhost:${options.port}\x1B[0m`)
 		})
@@ -29,7 +33,7 @@ exports.WebpackPlugin = class SvgPreviewPlugin {
 	}
 }
 
-exports.VitePlugin = function (options) {
+export function VitePlugin (options: pluginOptions) {
 	let isWatch = false
 
 	return {
