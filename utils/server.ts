@@ -28,7 +28,7 @@ const createServer = (options: pluginOptions) => {
 
 	bs.init({
 		server: resolve('../app'),
-		open: false,
+		open: options.open,
 		ui: false,
 		port: options.port
 	}, initEmitter)

@@ -23,6 +23,11 @@ npm i -D svg-preview-plugin@latest
   * Type: `string | array`
   * Desc: `预览路径`
 
+* open
+  * Type: `boolean`
+  * Default: `true`
+  * Desc: `自动打开预览窗口`
+
 * port
   * Type: `number`
   * Desc: `预览端口`

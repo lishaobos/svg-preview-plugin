@@ -223,7 +223,7 @@ var createServer = (options) => {
   cacheOptions = options;
   bs.init({
     server: resolve("../app"),
-    open: false,
+    open: options.open,
     ui: false,
     port: options.port
   }, initEmitter);
@@ -318,6 +318,7 @@ var WebpackPlugin = class SvgPreviewPlugin {
   }
   async apply(compiler) {
     const { options } = this;
+    options.open ?? (options.open = true);
     compiler.hooks.done.tap("SvgPreviewPlugin", () => {
       console.log(`SVG\u9884\u89C8\uFF1A`, `\x1B[36mhttp://localhost:${options.port}\x1B[0m`);
     });
@@ -330,6 +331,7 @@ var WebpackPlugin = class SvgPreviewPlugin {
 };
 function VitePlugin(options) {
   let isWatch = false;
+  options.open ?? (options.open = true);
   return {
     name: "SvgPreviewPlugin",
     apply: "serve",
