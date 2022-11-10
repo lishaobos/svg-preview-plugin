@@ -233,6 +233,7 @@ var destoryServer = () => bs.exit();
 
 // utils/file.ts
 var watchers = [];
+var cacheOptions2;
 var getFileContent = async (filePath) => {
   const content = await import_promises2.default.readFile(filePath, "utf8");
   return {
@@ -255,15 +256,15 @@ var matchFiles = ({ dirPath, deep }) => {
 };
 var getFilesInfo = (fileList) => Promise.all(fileList.map((filePath) => getFileContent(filePath)));
 var timer;
-var watchDir = async (dirPath) => {
+var watchDir = async () => {
   clearTimeout(timer);
   timer = setTimeout(async () => {
-    await writeFile(dirPath);
+    await writeFile(cacheOptions2);
     reloadServer();
   }, 100);
 };
 var createWatcher = ({ dirPath }) => {
-  const fnc = () => watchDir(dirPath);
+  const fnc = () => watchDir();
   if (Array.isArray(dirPath)) {
     const arr = dirPath.map((path3) => (0, import_fs.watch)(path3, fnc));
     watchers.push(...arr);
@@ -272,6 +273,7 @@ var createWatcher = ({ dirPath }) => {
   watchers.push((0, import_fs.watch)(dirPath, fnc));
 };
 var start = async (options) => {
+  cacheOptions2 = options;
   createServer(options);
   createWatcher(options);
   await writeFile(options);

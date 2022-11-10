@@ -9,6 +9,8 @@ import type { FSWatcher } from 'fs'
 
 const watchers: FSWatcher[] = []
 
+let cacheOptions: pluginOptions
+
 const getFileContent = async (filePath: string) => {
   const content = await fs.readFile(filePath, 'utf8')
 	return {
@@ -35,17 +37,17 @@ const matchFiles = ({ dirPath, deep }: pluginOptions) => {
 const getFilesInfo = (fileList: string[]) => Promise.all(fileList.map(filePath => getFileContent(filePath)))
 
 let timer: NodeJS.Timeout | undefined
-const watchDir = async (dirPath) => {
+const watchDir = async () => {
   clearTimeout(timer)
 
   timer = setTimeout(async () => {
-    await writeFile(dirPath)
+    await writeFile(cacheOptions)
     reloadServer()
   }, 100)
 }
 
 const createWatcher = ({ dirPath }: pluginOptions) => {
-  const fnc = () => watchDir(dirPath)
+  const fnc = () => watchDir()
   
   if (Array.isArray(dirPath)) {
     const arr = dirPath.map(path => watch(path, fnc))
@@ -57,6 +59,7 @@ const createWatcher = ({ dirPath }: pluginOptions) => {
 }
 
 const start = async (options: pluginOptions) => {
+  cacheOptions = options
   createServer(options)
   createWatcher(options)
   await writeFile(options)
