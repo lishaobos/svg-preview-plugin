@@ -30,6 +30,7 @@ npm i -D svg-preview-plugin@latest
 
 * port
   * Type: `number`
+  * Default: 3000
   * Desc: `预览端口`
 
 * deep

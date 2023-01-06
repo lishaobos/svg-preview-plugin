@@ -20,6 +20,7 @@ export const WebpackPlugin = class SvgPreviewPlugin {
 	async apply(compiler: Compiler) {
 		const { options } = this
 		options.open ??= true
+		options.port ??= 3000
 
 		compiler.hooks.done.tap('SvgPreviewPlugin', ()=> {
 			console.log(`SVG预览：`, `\x1B[36mhttp://localhost:${options.port}\x1B[0m`)
@@ -29,27 +30,22 @@ export const WebpackPlugin = class SvgPreviewPlugin {
 		
 		if (!this.isWatch) {
 			this.isWatch = true
-			
 			await start(options)
 		}
 	}
 }
 
 export function VitePlugin (options: pluginOptions) {
-	let isWatch = false
 	options.open ??= true
+	options.port ??= 3000
 
 	return {
 		name: 'SvgPreviewPlugin',
 		apply: 'serve',
 		async buildStart() {
 			console.log(`SVG预览：`, `\x1B[36mhttp://localhost:${options.port}\x1B[0m`)
-
-			if (!isWatch) {
-				isWatch = true
-				
-				await start(options)
-			}
+			destory()
+			await start(options)
 		},
 		closeWatcher() {
 			destory()

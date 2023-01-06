@@ -65,7 +65,7 @@ export default `
               删除
             </el-button>
             <el-button size="mini" @click="copy(item.name)">复制名称</el-button>
-            <el-button size="mini" @click="copy(item.filePath)">
+            <el-button size="mini" @click="nativeCopy(item.filePath)">
               复制路径
             </el-button>
           </div>
@@ -85,7 +85,8 @@ export default `
         data() {
           return {
             list: [],
-            isSocketInit: false
+            isSocketInit: false,
+            timer: null
           }
         },
         created() {
@@ -122,13 +123,17 @@ export default `
             })
             window.___browserSync___.socket.emit('removeFile', filePath)
           },
-          async copy(val) {
+          async nativeCopy(val) {
+            clearTimeout(this.timer)
+            this.timer = setTimeout(async () => {
+              await navigator.clipboard.writeText(val)
+              this.$message.success('复制成功：' + val)
+            }, 500)
+          },
+          copy(val) {
             if (!this.isSocketInit) {
               this.isSocketInit = true
-              window.___browserSync___.socket.on('name', async name => {
-                await navigator.clipboard.writeText(name)
-                this.$message.success('复制成功：' + name)
-              })
+              window.___browserSync___.socket.on('name', this.nativeCopy)
             }
 
             window.___browserSync___.socket.emit('formatName', val)

@@ -79,7 +79,7 @@ const writeFile = async (options: pluginOptions) => {
 const destory = () => {
   watchers.length = 0
 
-  destoryServer()
+  return destoryServer()
 }
 
 export {

@@ -2,8 +2,14 @@ import { Compiler } from 'webpack';
 
 declare type pluginOptions = {
     dirPath: string | Array<string>;
+    /**
+     * @default 3000
+     */
+    port?: number;
+    /**
+     * @default true
+     */
     open?: boolean;
-    port: number;
     deep?: boolean;
     formatName?: (name: string) => string;
 };

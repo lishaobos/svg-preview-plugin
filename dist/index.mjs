@@ -93,7 +93,7 @@ var html_template_default = `
               \u5220\u9664
             </el-button>
             <el-button size="mini" @click="copy(item.name)">\u590D\u5236\u540D\u79F0</el-button>
-            <el-button size="mini" @click="copy(item.filePath)">
+            <el-button size="mini" @click="nativeCopy(item.filePath)">
               \u590D\u5236\u8DEF\u5F84
             </el-button>
           </div>
@@ -113,7 +113,8 @@ var html_template_default = `
         data() {
           return {
             list: [],
-            isSocketInit: false
+            isSocketInit: false,
+            timer: null
           }
         },
         created() {
@@ -150,13 +151,17 @@ var html_template_default = `
             })
             window.___browserSync___.socket.emit('removeFile', filePath)
           },
-          async copy(val) {
+          async nativeCopy(val) {
+            clearTimeout(this.timer)
+            this.timer = setTimeout(async () => {
+              await navigator.clipboard.writeText(val)
+              this.$message.success('\u590D\u5236\u6210\u529F\uFF1A' + val)
+            }, 500)
+          },
+          copy(val) {
             if (!this.isSocketInit) {
               this.isSocketInit = true
-              window.___browserSync___.socket.on('name', async name => {
-                await navigator.clipboard.writeText(name)
-                this.$message.success('\u590D\u5236\u6210\u529F\uFF1A' + name)
-              })
+              window.___browserSync___.socket.on('name', this.nativeCopy)
             }
 
             window.___browserSync___.socket.emit('formatName', val)
@@ -278,7 +283,7 @@ var writeFile = (options) => __async(void 0, null, function* () {
 });
 var destory = () => {
   watchers.length = 0;
-  destoryServer();
+  return destoryServer();
 };
 
 // utils/schema.json
@@ -311,9 +316,10 @@ var WebpackPlugin = class SvgPreviewPlugin {
   }
   apply(compiler) {
     return __async(this, null, function* () {
-      var _a;
+      var _a, _b;
       const { options } = this;
       (_a = options.open) != null ? _a : options.open = true;
+      (_b = options.port) != null ? _b : options.port = 3e3;
       compiler.hooks.done.tap("SvgPreviewPlugin", () => {
         console.log(`SVG\u9884\u89C8\uFF1A`, `\x1B[36mhttp://localhost:${options.port}\x1B[0m`);
       });
@@ -326,19 +332,17 @@ var WebpackPlugin = class SvgPreviewPlugin {
   }
 };
 function VitePlugin(options) {
-  var _a;
-  let isWatch = false;
+  var _a, _b;
   (_a = options.open) != null ? _a : options.open = true;
+  (_b = options.port) != null ? _b : options.port = 3e3;
   return {
     name: "SvgPreviewPlugin",
     apply: "serve",
     buildStart() {
       return __async(this, null, function* () {
         console.log(`SVG\u9884\u89C8\uFF1A`, `\x1B[36mhttp://localhost:${options.port}\x1B[0m`);
-        if (!isWatch) {
-          isWatch = true;
-          yield start(options);
-        }
+        destory();
+        yield start(options);
       });
     },
     closeWatcher() {
