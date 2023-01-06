@@ -50,11 +50,11 @@ const { WebpackPlugin } = require('svg-preview-plugin')
 module.exports = {
   plugins: [
     new WebpackPlugin({
-      dirPath: path.resolve('src/common/icons/svg'),
+      dirPath: path.resolve('src/assets/icons/svg'),
       port: 3000,
       deep: true,
       formatName(name) {
-        reurn `<MyIcon name="${name}">`
+        return `<MyIcon name="${name}" />`
       }
     })
   ]
@@ -68,11 +68,11 @@ import { VitePlugin } from 'svg-preview-plugin'
 module.exports = {
   plugins: [
     VitePlugin({
-      dirPath: path.resolve('src/common/icons/svg'),
+      dirPath: path.resolve('src/assets/icons/svg'),
       port: 3000,
       deep: true,
       formatName(name) {
-        reurn `<MyIcon name="${name}">`
+        return `<MyIcon name="${name}" />`
       }
     })
   ]
