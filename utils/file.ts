@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import glob from 'glob'
 import { watch } from 'fs'
 import fs from 'fs/promises'
@@ -6,6 +8,7 @@ import { createHtmlTemplate } from './html'
 import { resolve } from './index'
 import { createServer, destoryServer, reloadServer } from './server'
 import type { FSWatcher } from 'fs'
+import type { pluginOptions } from '../type'
 
 const watchers: FSWatcher[] = []
 

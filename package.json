@@ -4,11 +4,19 @@
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "homepage": "https://github.com/lishaobos/svg-preview-plugin",
   "repository": "https://github.com/lishaobos/svg-preview-plugin",
   "scripts": {
     "eslint": "eslint .",
     "build": "tsup index.ts --dts --format esm,cjs"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
   },
   "dependencies": {
     "browser-sync": "^2.26.14",

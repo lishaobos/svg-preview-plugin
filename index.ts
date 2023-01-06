@@ -2,6 +2,7 @@ import { start, destory } from './utils/file'
 import schema from './utils/schema.json'
 import { validate } from 'schema-utils'
 import type { Compiler } from 'webpack'
+import type { pluginOptions } from './type'
 
 
 export const WebpackPlugin = class SvgPreviewPlugin {

@@ -1,7 +1,12 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import browserSync from 'browser-sync'
 import { resolve } from './index'
 import fs from 'fs/promises'
 import type { PathLike } from 'fs'
+import type { pluginOptions } from '../type'
+
+type Key = 'removeFile' | 'formatName'
 
 const bs = browserSync.create()
 let cacheOptions: pluginOptions | undefined
@@ -20,7 +25,7 @@ const socketEmitter = {
 }
 
 const initEmitter = () => {
-	bs.sockets.on('connection', client => Object.keys(socketEmitter).forEach( key => client.on(key, socketEmitter[key])));
+	bs.sockets.on('connection', (client: any) => Object.keys(socketEmitter).forEach((key) => client.on(key, socketEmitter[key as Key])));
 }
 
 const createServer = (options: pluginOptions) => {
