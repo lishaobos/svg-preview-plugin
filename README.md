@@ -54,7 +54,7 @@ module.exports = {
       dirPath: path.resolve('src/assets/icons/svg'),
       port: 3000,
       deep: true,
-      formatName(name) {
+      formatName({name, filePath}) {
         return `<MyIcon name="${name}" />`
       }
     })
@@ -72,7 +72,7 @@ module.exports = {
       dirPath: path.resolve('src/assets/icons/svg'),
       port: 3000,
       deep: true,
-      formatName(name) {
+      formatName({name, filePath}) {
         return `<MyIcon name="${name}" />`
       }
     })

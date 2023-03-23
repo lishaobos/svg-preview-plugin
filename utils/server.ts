@@ -4,7 +4,7 @@ import browserSync from 'browser-sync'
 import { resolve } from './index'
 import fs from 'fs/promises'
 import type { PathLike } from 'fs'
-import type { pluginOptions } from '../type'
+import type { pluginOptions, FormatData } from '../type'
 
 type Key = 'removeFile' | 'formatName'
 
@@ -15,11 +15,14 @@ const socketEmitter = {
 	async removeFile(path: PathLike) {
 		await fs.rm(path)
 	},
-	formatName(name: string) {
+	formatName(data: FormatData) {
 		if (typeof cacheOptions?.formatName === 'function') {
-			bs.sockets.emit('name', cacheOptions.formatName(name))
+			bs.sockets.emit('name', cacheOptions.formatName({
+				name: data.name,
+				filePath: data.filePath
+			}))
 		} else {
-			bs.sockets.emit('name', name)
+			bs.sockets.emit('name', data.name)
 		}
 	}
 }

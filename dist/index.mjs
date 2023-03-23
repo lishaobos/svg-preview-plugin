@@ -92,7 +92,7 @@ var html_template_default = `
             <el-button size="mini" type="danger" @click="del(item.filePath)">
               \u5220\u9664
             </el-button>
-            <el-button size="mini" @click="copy(item.name)">\u590D\u5236\u540D\u79F0</el-button>
+            <el-button size="mini" @click="copy(item)">\u590D\u5236\u540D\u79F0</el-button>
             <el-button size="mini" @click="nativeCopy(item.filePath)">
               \u590D\u5236\u8DEF\u5F84
             </el-button>
@@ -174,10 +174,7 @@ var html_template_default = `
       app.mount('#app')
     <\/script>
   </body>
-</html>
-
-
-`;
+</html>`;
 
 // utils/html.ts
 var createHtmlTag = (filesContent) => {
@@ -204,11 +201,14 @@ var socketEmitter = {
       yield fs.rm(path3);
     });
   },
-  formatName(name) {
+  formatName(data) {
     if (typeof (cacheOptions == null ? void 0 : cacheOptions.formatName) === "function") {
-      bs.sockets.emit("name", cacheOptions.formatName(name));
+      bs.sockets.emit("name", cacheOptions.formatName({
+        name: data.name,
+        filePath: data.filePath
+      }));
     } else {
-      bs.sockets.emit("name", name);
+      bs.sockets.emit("name", data.name);
     }
   }
 };

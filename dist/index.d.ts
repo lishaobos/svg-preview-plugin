@@ -1,5 +1,9 @@
 import { Compiler } from 'webpack';
 
+declare type FormatData = {
+    name: string;
+    filePath: string;
+};
 declare type pluginOptions = {
     dirPath: string | Array<string>;
     /**
@@ -11,7 +15,7 @@ declare type pluginOptions = {
      */
     open?: boolean;
     deep?: boolean;
-    formatName?: (name: string) => string;
+    formatName?: (name: FormatData) => string;
 };
 
 declare const WebpackPlugin: {

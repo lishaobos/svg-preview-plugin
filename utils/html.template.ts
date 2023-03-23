@@ -64,7 +64,7 @@ export default `
             <el-button size="mini" type="danger" @click="del(item.filePath)">
               删除
             </el-button>
-            <el-button size="mini" @click="copy(item.name)">复制名称</el-button>
+            <el-button size="mini" @click="copy(item)">复制名称</el-button>
             <el-button size="mini" @click="nativeCopy(item.filePath)">
               复制路径
             </el-button>
@@ -146,7 +146,4 @@ export default `
       app.mount('#app')
     </script>
   </body>
-</html>
-
-
-`
+</html>`

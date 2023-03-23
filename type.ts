@@ -1,6 +1,11 @@
 import type { Plugin } from 'vite'
 import type { Compiler } from 'webpack'
 
+export type FormatData = {
+	name: string
+	filePath: string
+}
+
 export type pluginOptions = {
 	dirPath: string | Array<string>
 	/**
@@ -12,7 +17,7 @@ export type pluginOptions = {
 	 */
 	open?: boolean
 	deep?: boolean
-	formatName?: (name: string) => string
+	formatName?: (name: FormatData) => string
 }
 
 export declare class WebpackPlugin {
