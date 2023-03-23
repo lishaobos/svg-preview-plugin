@@ -77,8 +77,8 @@ var html_template_default = `
       }
     </style>
   </head>
-  <script src="./vue@next.js"><\/script>
-  <script src="./element-ui.js"><\/script>
+  <script src="./vue@next.js"></script>
+  <script src="./element-ui.js"></script>
   <body>
     <div id="app">
       <div class="svg-container">
@@ -172,14 +172,14 @@ var html_template_default = `
       const app = Vue.createApp(App)
       app.use(ElementPlus)
       app.mount('#app')
-    <\/script>
+    </script>
   </body>
 </html>`;
 
 // utils/html.ts
 var createHtmlTag = (filesContent) => {
   const content = JSON.stringify(filesContent);
-  return `<script>const list = JSON.parse(JSON.stringify(${content}))<\/script>`;
+  return `<script>const list = JSON.parse(JSON.stringify(${content}))</script>`;
 };
 var createHtmlTemplate = (filesContent) => {
   const content = createHtmlTag(filesContent);

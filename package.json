@@ -9,7 +9,9 @@
   "repository": "https://github.com/lishaobos/svg-preview-plugin",
   "scripts": {
     "eslint": "eslint .",
-    "build": "tsup index.ts --dts --format esm,cjs"
+    "build": "pnpm eslint && tsup index.ts --dts --format esm,cjs",
+    "release": "bump --commit \"fix: update version\" --push --tag",
+    "pub": "pnpm build && pnpm release && pnpm publish"
   },
   "exports": {
     ".": {
@@ -36,6 +38,7 @@
   "author": "lishaobos",
   "license": "ISC",
   "devDependencies": {
+    "@jsdevtools/version-bump-prompt": "^6.1.0",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
     "eslint": "^8.27.0",

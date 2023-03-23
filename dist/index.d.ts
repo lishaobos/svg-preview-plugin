@@ -1,10 +1,10 @@
 import { Compiler } from 'webpack';
 
-declare type FormatData = {
+type FormatData = {
     name: string;
     filePath: string;
 };
-declare type pluginOptions = {
+type pluginOptions = {
     dirPath: string | Array<string>;
     /**
      * @default 3000
