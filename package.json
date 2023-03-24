@@ -1,6 +1,6 @@
 {
   "name": "svg-preview-plugin",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -11,7 +11,7 @@
     "eslint": "eslint .",
     "build": "pnpm eslint && tsup index.ts --dts --format esm,cjs",
     "release": "bump --commit \"fix: update version\" --push --tag",
-    "pub": "pnpm build && pnpm release && pnpm publish --no-git-checks"
+    "pub": "pnpm build && pnpm release && pnpm publish"
   },
   "exports": {
     ".": {
