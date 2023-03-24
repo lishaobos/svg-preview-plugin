@@ -1,6 +1,6 @@
 # svg-preview-plugin
 
-说明：解决项目中 svg 文件过多，不好管理的问题（支持 vite 和 webpack）
+说明：解决项目中 svg 文件过多，不好同意查看管理的问题（支持 vite 和 webpack）
 
 
 <img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8c452533b0e847f48c10872a465d1e19~tplv-k3u1fbpfcp-watermark.image">
